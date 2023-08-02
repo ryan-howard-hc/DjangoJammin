@@ -1,7 +1,7 @@
 # DJANGO JAMMIN | MUSIC LIBRARY DB
 
 ## MoSCoW
-# Must have
+## Must have
 ` 1. Django framework`
 ` 1b. Django Rest Framework to build API routes for the CRUD operations.`
 ` 1c. Routes to perform CRUD operations for each model (Song, Album, Artist, etc.)`
@@ -16,16 +16,66 @@
 ` 6. Define foreign key relationships as well as ManyToMany relationships between each model`
 ` 7. Create API routes to display info as JSON`
 
-# Should have
+## Should have
 ` 1. Route to allow users to add a song to a playlist.`
 ` 2. Routes that accept query parameters (?query=search) to search/filter for data in models.`
 ` 3. Custom field to the API to keep track of the most popular songs based on playlist additions.`
 ` 4. Link up the database/API to a React frontend for a complete music library application.`
 
-# Could have
+## Could have
 ` 1. Functionality for filtering a list of songs by artist or other criteria.`
 ` 2. User authentication and authorization to restrict access to certain API routes.`
 
-# Wont have
+## Wont have
 ` 1. Spotify's permission`
 
+## CRUD
+
+
+## INIT
+## Models.py
+from django.db import models
+
+class Artist(models.Model):
+    name = models.CharField(max_length=100)
+
+class Album(models.Model):
+    label = models.CharField(max_length=200)
+
+class Song(models.Model):
+    title = models.CharField(max_length=200)
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    genres = models.ManyToManyField(Genre)
+
+## Urls.py
+
+router = routers.DefaultRouter()
+router.register(r'artists', views.ArtistViewSet)
+router.register(r'albums', views.AlbumViewSet)
+router.register(r'songs', views.SongViewSet)
+
+urlpatterns = [
+    path('api/', include(router.urls)),
+]
+
+## Views.py
+
+class ArtistViewSet(viewsets.ModelViewSet):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+
+class AlbumViewSet(viewsets.ModelViewSet):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
+
+class SongViewSet(viewsets.ModelViewSet):
+    queryset = Song.objects.all()
+    serializer_class = SongSerializer
+
+## ../settings.py
+
+INSTALLED_APPS = [
+    'rest_framework',
+    'jams',
+]
