@@ -1,6 +1,9 @@
 # DJANGO JAMMIN | MUSIC LIBRARY DB
 
 ## MoSCoW
+
+<br>
+
 ## Must have
  1. Django framework
     -  Django Rest Framework to build API routes for the CRUD operations.
@@ -45,6 +48,8 @@
 ## Wont have
  1. Spotify's permission
 
+<br>
+
 ## CRUD
  READ - Serializers to read table info, songs,
 
@@ -53,6 +58,8 @@ POST
 UPDATE
 
 DELETE
+
+<br>
 
 ## INIT
 ## Models.py
@@ -79,6 +86,8 @@ class Song(models.Model):
 
     genres = models.ManyToManyField(Genre)
 
+<br>
+
 ## Urls.py
 
 router = routers.DefaultRouter()
@@ -95,6 +104,8 @@ urlpatterns = [
     path('api/', include(router.urls)),
 
 ]
+
+<br>
 
 ## Views.py
 
@@ -118,6 +129,8 @@ class SongViewSet(viewsets.ModelViewSet):
 
     serializer_class = SongSerializer
 
+<br>
+
 ## ../settings.py
 
 INSTALLED_APPS = [
@@ -128,6 +141,7 @@ INSTALLED_APPS = [
 
 ]
 
+<br>
 
 ## API BUILD
 Django Rest Framework serializers. Stored as JSON for READing, but have the ability to fetch said data using urls.py
