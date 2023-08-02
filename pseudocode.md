@@ -61,6 +61,25 @@ DELETE - Get rid of DB info/relationships
 <br>
 
 ## INIT
+## USEFUL COMMANDS FOR DJANGO
+- python -m pip install Django
+
+- pip freeze > requirements.txt
+
+- django-admin startproject (name)
+
+- cd (name)
+
+- python manage.py startapp (name)
+
+- pip install djangorestframework
+
+- python manage.py makemigrations
+
+- python manage.py migrate
+
+- python manage.py runserver
+
 ## Models.py
 from django.db import models
 
