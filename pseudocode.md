@@ -11,7 +11,7 @@
         - POST: Create new objects
 
         - PUT/PATCH: Update existing objects
-        
+
         - DELETE
 
  2. PostgreSQL DB to store music library data 
@@ -58,48 +58,74 @@ DELETE
 ## Models.py
 from django.db import models
 
+
 class Artist(models.Model):
+
     name = models.CharField(max_length=100)
 
+
 class Album(models.Model):
+
     label = models.CharField(max_length=200)
 
+
 class Song(models.Model):
+
     title = models.CharField(max_length=200)
+
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
+
     genres = models.ManyToManyField(Genre)
 
 ## Urls.py
 
 router = routers.DefaultRouter()
+
 router.register(r'artists', views.ArtistViewSet)
+
 router.register(r'albums', views.AlbumViewSet)
+
 router.register(r'songs', views.SongViewSet)
 
+
 urlpatterns = [
+
     path('api/', include(router.urls)),
+
 ]
 
 ## Views.py
 
 class ArtistViewSet(viewsets.ModelViewSet):
+
     queryset = Artist.objects.all()
+
     serializer_class = ArtistSerializer
 
+
 class AlbumViewSet(viewsets.ModelViewSet):
+
     queryset = Album.objects.all()
+
     serializer_class = AlbumSerializer
 
+
 class SongViewSet(viewsets.ModelViewSet):
+
     queryset = Song.objects.all()
+
     serializer_class = SongSerializer
 
 ## ../settings.py
 
 INSTALLED_APPS = [
+
     'rest_framework',
+
     'jams',
+
 ]
 
 
