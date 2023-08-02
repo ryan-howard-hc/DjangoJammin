@@ -21,8 +21,7 @@
 
  3. Thunder Client to test API routes
 
- 4. Design a relationship diagram to show relationships between models [Relationship Diagram](https://dbdiagram.io/d/
- 64ca718c02bd1c4a5e2153ea)
+ 4. Design a relationship diagram to show relationships between models [Relationship Diagram](https://dbdiagram.io/d/64ca718c02bd1c4a5e2153ea)
 
  5. Implement models for each component such as Songs, albums, etc to represent data in DB
 
@@ -146,4 +145,5 @@ INSTALLED_APPS = [
 ## API BUILD
 Django Rest Framework serializers. Stored as JSON for READing, but have the ability to fetch said data using urls.py
 
-JSON output example : {"song_id":1, "song_name":Changes, "artist_id":1, "artist_name":Black Sabbath, "album_id":1, "album_label":Vol. 4}
+
+JSON output : {"song_id": 1, "song_name": Changes, "artist_id": 1, "artist_name": Black Sabbath, "album_id": 1, "album_label": Vol. 4}
