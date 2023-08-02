@@ -9,9 +9,9 @@
     ` POST: Create new objects`
     ` PUT/PATCH: Update existing objects`
     ` DELETE`
-` 2. PostgreSQL DB to store music library data`
+` 2. PostgreSQL DB to store music library data` 
 ` 3. Thunder Client to test API routes`
-` 4. Design a relationship diagram to show relationships between models`
+` 4. Design a relationship diagram to show relationships between models [Relationship Diagram](https://dbdiagram.io/d/64ca718c02bd1c4a5e2153ea)`
 ` 5. Implement models for each component such as Songs, albums, etc to represent data in DB`
 ` 6. Define foreign key relationships as well as ManyToMany relationships between each model`
 ` 7. Create API routes to display info as JSON`
@@ -30,52 +30,60 @@
 ` 1. Spotify's permission`
 
 ## CRUD
-
+` READ - Serializers to read table info, songs,`
+`POST`
+`UPDATE`
+`DELETE`
 
 ## INIT
 ## Models.py
-from django.db import models
+`from django.db import models`
 
-class Artist(models.Model):
-    name = models.CharField(max_length=100)
+`class Artist(models.Model):`
+    `name = models.CharField(max_length=100)`
 
-class Album(models.Model):
-    label = models.CharField(max_length=200)
+`class Album(models.Model):`
+    `label = models.CharField(max_length=200)`
 
-class Song(models.Model):
-    title = models.CharField(max_length=200)
-    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
-    album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    genres = models.ManyToManyField(Genre)
+`class Song(models.Model):`
+    `title = models.CharField(max_length=200)`
+    `artist = models.ForeignKey(Artist, on_delete=models.CASCADE)`
+    `album = models.ForeignKey(Album, on_delete=models.CASCADE)`
+    `genres = models.ManyToManyField(Genre)`
 
 ## Urls.py
 
-router = routers.DefaultRouter()
-router.register(r'artists', views.ArtistViewSet)
-router.register(r'albums', views.AlbumViewSet)
-router.register(r'songs', views.SongViewSet)
+`router = routers.DefaultRouter()`
+`router.register(r'artists', views.ArtistViewSet)`
+`router.register(r'albums', views.AlbumViewSet)`
+`router.register(r'songs', views.SongViewSet)`
 
-urlpatterns = [
-    path('api/', include(router.urls)),
-]
+`urlpatterns = [`
+    `path('api/', include(router.urls)),`
+`]`
 
 ## Views.py
 
-class ArtistViewSet(viewsets.ModelViewSet):
-    queryset = Artist.objects.all()
-    serializer_class = ArtistSerializer
+`class ArtistViewSet(viewsets.ModelViewSet):`
+    `queryset = Artist.objects.all()`
+    `serializer_class = ArtistSerializer`
 
-class AlbumViewSet(viewsets.ModelViewSet):
-    queryset = Album.objects.all()
-    serializer_class = AlbumSerializer
+`class AlbumViewSet(viewsets.ModelViewSet):`
+    `queryset = Album.objects.all()`
+    `serializer_class = AlbumSerializer`
 
-class SongViewSet(viewsets.ModelViewSet):
-    queryset = Song.objects.all()
-    serializer_class = SongSerializer
+`class SongViewSet(viewsets.ModelViewSet):`
+    `queryset = Song.objects.all()`
+    `serializer_class = SongSerializer`
 
 ## ../settings.py
 
-INSTALLED_APPS = [
-    'rest_framework',
-    'jams',
-]
+`INSTALLED_APPS = [`
+    `'rest_framework',`
+    `'jams',`
+`]`
+
+
+## API BUILD
+`Django Rest Framework serializers. Stored as JSON for READing, but have the ability to fetch said data using urls.py`
+`JSON output example : {"song_id":1, "song_name":Changes, "artist_id":1, "artist_name":Black Sabbath, "album_id":1, "album_label":Vol. 4}`
