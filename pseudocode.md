@@ -6,7 +6,7 @@
 
 ## Must have
  1. Django framework
-    -  Django Rest Framework to build API routes for the CRUD operations.
+    - Django Rest Framework to build API routes for the CRUD operations.
     - Routes to perform CRUD operations for each model (Song, Album, Artist, etc.)
 
         - GET: Retrieve objects
@@ -21,13 +21,13 @@
 
  3. Thunder Client to test API routes
 
- 4. Design a relationship diagram to show relationships between models [Relationship Diagram](https://dbdiagram.io/d/64ca718c02bd1c4a5e2153ea)
+ 4. Relationship diagram to show relationships between models [Relationship Diagram](https://dbdiagram.io/d/64ca718c02bd1c4a5e2153ea)
 
- 5. Implement models for each component such as Songs, albums, etc to represent data in DB
+ 5. Models for each component such as Songs, albums, etc to represent data in DB
 
- 6. Define foreign key relationships as well as ManyToMany relationships between each model
+ 6. Foreign key relationships as well as ManyToMany relationships between each model
 
- 7. Create API routes to display info as JSON
+ 7. API routes to display info as JSON
 
 ## Should have
  1. Route to allow users to add a song to a playlist.
@@ -50,13 +50,13 @@
 <br>
 
 ## CRUD
- READ - Serializers to read table info, songs,
+READ - Serializers to read table info, songs, albums, artists, etc...
 
-POST
+POST - Add new info/relationships in DB
 
-UPDATE
+UPDATE - Update existing DB info/relationships
 
-DELETE
+DELETE - Get rid of DB info/relationships
 
 <br>
 
