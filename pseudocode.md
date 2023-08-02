@@ -162,6 +162,8 @@ INSTALLED_APPS = [
 <br>
 
 ## API BUILD
+<!-- Thank you claytonius -->
+
 Django Rest Framework serializers. Stored as JSON for READing, but have the ability to fetch said data using urls.py
 
 
