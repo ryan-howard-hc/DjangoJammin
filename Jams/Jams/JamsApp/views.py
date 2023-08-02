@@ -1,3 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
+from rest_framework import viewsets
+from .models import Artist, Genre, Album, Song
+from .serializers import ArtistSerializer, GenreSerializer, AlbumSerializer, SongSerializer
